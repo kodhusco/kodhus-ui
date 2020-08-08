@@ -1,0 +1,16 @@
+.cdt-badge {
+  background: $primary-color;
+  display: inline-flex;
+  border-radius: 5px;
+  align-items: center;
+  color: #fff;
+  justify-content: center;
+  padding: 3px 5px;
+  &.rounded {
+    border-radius: 50px;
+  }
+  &.hallow {
+    background: $gray-color-5;
+    color: $gray-color-1;
+  }
+}

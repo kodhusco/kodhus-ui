@@ -1,19 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="UTF-8" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kodhus library example</title>
-    <link rel="stylesheet" href="../dist/kodhus-latest.min.css">
+    <meta name="description" content="Movit svg path animator and manipulator">
+    <meta name="author" content="Kodhus">
+    <meta name="keywords" content="ui, ux, library, framework, javascript, webdesign, webdev, web development, html5, svg, svg path, animation, animator" />
+    <title>Moveit svg library</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="github.min.css">
+    <link rel="stylesheet" href="../dist/kodhus-0.1.0.min.css" />
     <style>
       section {
         min-height: 300px;
       }
+      .mobile-trigger {
+        right: 10px;
+      }
+      .hero {
+        color: #eee;
+        box-sizing: border-box;
+        padding-bottom: 30px;
+      }
+      .hero h1 {
+        font-weight: 500;
+        font-family: "Lato", sans-serif;
+      }
+      .infinite {
+        height: 200px;
+        position: relative;
+      }
+      h2 {
+        margin-bottom: 30px;
+      }
+      svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.4);
+      }
+      path {
+        fill: none;
+        stroke: #6b1b80;
+        stroke-width: 12;
+        stroke-linecap: round;
+      }
+      .infinity-path {
+        stroke: #fff;
+      }
+      main {
+        padding: 20px 20px 30px 20px;
+        font-size: 16px;
+      }
+      code {
+          font-family: 'Source Code Pro', monospace;
+          background-color: rgb(245, 247, 249) !important;
+          font-size: 14px;
+          font-weight: 400 !important;
+        }
+        td.hljs-ln-numbers {
+          color: rgb(193, 199, 205);
+          font-size: 13px;
+          padding-right: 15px !important;
+        }
+        td.hljs-ln-code {
+          padding-left: 10px;
+        }
+        footer {
+          margin-top: 10px;
+          border-top: 1px solid #e2e2e2;
+          padding: 20px 20px 10px 20px;
+          box-sizing: border-box;
+        }
+        footer > div {
+          display: flex;
+          justify-content: space-between;
+        }
+        @media screen and (max-width: 768px) {
+          footer > div {
+            flex-wrap: wrap;
+          }
+          .sidebar {
+            margin-top: 10px;
+          }
+        }
+        footer .lighten {
+          color: #999;
+        }
+        footer .other-copyrights {
+          color: #222;
+          font-size: 10px;
+        }
+        #carbonads {
+          width: 300px;
+          background: #eee;
+          padding: 10px;
+          border-radius: 2px;
+        }
+        @media screen and (min-width: 768px) {
+          .sidebar {
+            border-left: 1px solid #eee;
+          }
+        }
+        #carbonads .carbon-wrap {
+          display: flex;
+        }
+        #carbonads .carbon-text {
+          padding-left: 10px;
+          text-decoration: none;
+          font-size: 12px;
+        }
+        #carbonads .carbon-poweredby {
+          display: flex;
+          justify-content: flex-end;
+          text-decoration: none;
+          font-size: 12px;
+          color: #999;
+        }
+        section {
+          margin-top: 40px;
+          padding-bottom: 30px;
+          border-bottom: 1px solid #eee;
+        }
     </style>
-</head>
-<body>
-   <p>Comming soon ...</p>
-    <script src="../dist/kodhus-latest.min.js"></script>
-</body>
+  </head>
+  <body>
+    <div class="cdt-top-nav undeline hide-on-scroll menu-right">
+      <div class="logo">
+        <a href="#">Moveit Library</a>
+      </div>
+      <div class="navigations menu-right">
+        <nav>
+          <ul>
+            <li><a href="#how-to-use">Usage</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#doc">Inline documentation</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    </div>
+    <div class="cdt-jumbotron center hero" style="background-color: #481256;">
+      <div class="cdt-6">
+        <h1>Introducing Moveit Library</h1>
+        <p class="cdt-sub-header">
+          Moveit Library is a lightweight SVG path manipulation and animation
+          library
+        </p>
+        <div class="infinite">
+          <svg width="120px" height="60px">
+            <path
+              stroke="#fff"
+              d="M 30 10 a 20 20 0 1 0 0 40 c 20 0 40 -40 60 -40 a 20 20 0 0 1 0 40 c -20 0 -40 -40 -60 -40"
+            ></path>
+          </svg>
+          <svg width="120px" height="60px">
+            <path
+              class="infinity-path"
+              stroke="#fff"
+              d="M 30 10 a 20 20 0 1 0 0 40 c 20 0 40 -40 60 -40 a 20 20 0 0 1 0 40 c -20 0 -40 -40 -60 -40"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="cdt-container">
+        <div class="cdt-row">
+          <div class="cdt-9">
+            <section id="how-to-use">
+              <h2>How to use</h2>
+            <p>
+              <p>1. Include the link to Moveit library javascript file right before <em>&lt;/body&gt;</em> tag:</p>
+            <pre><code class="html">&lt;script src=&quot;https://kodhus.com/moveit-0.5.js&quot;&gt;&lt;/script&gt;</code>
+    </pre>
+    <p>2. Create an svg path in your html and add the following code to your javascript:</p>  
+          </p>
+            <pre><code class="javascript">const yourElement = document.querySelector(&quot;.your-element-class&quot;);
+const moveit = new Moveit(yourElement, {
+  start: &quot;0%&quot;,
+  end: &quot;0%&quot;,
+});
+moveit.set({
+  start: &quot;0%&quot;,
+  end: &quot;100&quot;,
+  duration: 2,
+});
+            </code></pre>
+            </section>
+            <section id="example">
+              <h2>Example</h2>
+            <iframe src="https://kodhus.com/kodnest/embed/codify/befb810e118668eb39ec1b897bd710e2/html,css,js?headerColor=6b1b80&textColor=eee&linkColor=eee&selectedColor=fff" frameborder="0" height="400"></iframe>
+            </section>
+            <section id="doc">
+              <h2>Inline documentation</h2>
+              <blockquote>
+                <p class="emphy">Setting Start and end of the visible portion of the full svg path:</p>
+              </blockquote>
+                
+                <pre><code>const moveit = new Moveit('YOUR SVG PATH SELECTOR', {
+  start: 'start perentage of the path%',
+  end: 'end percentage of the path%',
+});
+                </code></pre>
+                <blockquote style="margin-top: 30px;">
+                  <p class="emphy">Animating SVG path:</p>
+                </blockquote>
+                <pre><code>moveit.set('YOUR SVG PATH SELECTOR', {
+  start: 'start perentage of the path%%',
+  end: 'end percentage of the path%',
+  duration: [Duration in second(s)],
+  delay: [Starting delay of animation in second(s)],
+  timing: 'ease-in' | 'ease-out' | 'ease-in-out' | 'cubic-bezier'
+});
+                </code></pre>
+            </section>
+          </div>
+          <div class="cdt-3 sidebar">
+            <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=kodhuscom" id="_carbonads_js"></script>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="cdt-container">
+        <div>Copyright © 2020. All rights reserved. Kodhus library is under <a target="_blank" href="https://github.com/Kodhuset/kodhus-ui/blob/master/LICENSE.md">MIT license</a>.</div>
+        <p>Reach us at <a href="mailto:kodhus@kodhus.com">kodhus@kodhus.com</a></p>
+      </div>
+      
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.3.0/highlightjs-line-numbers.min.js"></script>
+    <script src="../dist/kodhus-0.1.0.min.js"></script>
+    <script src="moveit.js"></script>
+    <script>
+      hljs.initLineNumbersOnLoad();
+    </script>
+    <script>
+      var infinity = document.querySelector(".infinity-path");
+      var infinityIcon = new Moveit(infinity, {
+        start: "0%",
+        end: "10%",
+      });
+
+      function animate() {
+        infinityIcon.set({
+          start: "73%",
+          end: "101",
+          duration: 2,
+          follow: true,
+          callback: function () {
+            animate();
+          },
+        });
+      }
+      animate();
+    </script>
+  </body>
 </html>

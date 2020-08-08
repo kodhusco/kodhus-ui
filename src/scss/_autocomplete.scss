@@ -1,0 +1,63 @@
+.cdt-autocomplete {
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    color: #999;
+  }
+
+  input {
+    margin: 0;
+    border: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .suggestions {
+    max-height: 400px;
+    overflow-y: scroll;
+    &.hide {
+      display: none;
+    }
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #ccc;
+    top: calc(100% + 3px);
+    left: 0;
+    width: 100%;
+    color: #555;
+    border-radius: 5px;
+    .item {
+      background: #fff;
+      &.selected {
+        background: lighten(#9ab1f1, 20%);
+      }
+      &:hover {
+        background: #f2f2f2;
+      }
+      a {
+        display: flex;
+        text-decoration: none;
+        color: #555;
+        flex-direction: column;
+        padding: 10px;
+      }
+      cursor: pointer;
+      transition: all 0.3s;
+      &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+  .title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+}
