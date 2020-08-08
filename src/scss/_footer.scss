@@ -8,7 +8,7 @@ $font-size: 16px;
     .newsletter-box {
       margin-top: 10px;
       p {
-        color: $gray-color;
+        color: $color-higher;
       }
       .signup {
         display: flex;
@@ -53,11 +53,11 @@ $font-size: 16px;
         padding: 4px 0;
         font-size: 16px;
         a {
-          color: $gray-color;
+          color: $color-higher;
           text-decoration: none;
           transition: all 0.3s;
           &:hover {
-            color: darken($gray-color, 30);
+            color: $color-highest;
           }
         }
       }
@@ -67,12 +67,12 @@ $font-size: 16px;
         margin-top: 20px;
       }
       &.border {
-        border-top: 1px solid $border-color;
+        border-top: 1px solid $color-mid;
       }
       display: flex;
       padding-top: 10px;
       justify-content: space-between;
-      color: $gray-color;
+      color: $color-higher;
     }
     &.v1 {
       .cdt-container {

@@ -22,7 +22,7 @@ $a-padding: 20px 10px;
     z-index: 9999;
   }
   &.dark {
-    background: #333;
+    background: $color-highest;
     color: #fff;
     .logo a {
       color: #fff;
@@ -126,7 +126,7 @@ $a-padding: 20px 10px;
     }
     a {
       text-decoration: none;
-      color: #333;
+      color: $color-highest;
       font-size: 18px;
     }
   }
@@ -258,9 +258,9 @@ $a-padding: 20px 10px;
         display: block;
         padding: $a-padding;
         text-decoration: none;
-        color: #666;
+        color: $color-higher;
         &:hover {
-          color: $primary-color;
+          color: $color-highest;
         }
       }
     }
@@ -336,7 +336,7 @@ $a-padding: 20px 10px;
       }
       a {
         text-decoration: none;
-        color: #333;
+        color: $color-highest;
         width: 100%;
         height: 100%;
       }

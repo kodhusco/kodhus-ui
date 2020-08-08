@@ -139,7 +139,7 @@ gulp.task(
       },
       notify: false,
     });
-    gulp.watch("src/scss/*.scss", gulp.series("sass-build-min"));
+    gulp.watch("src/scss/*.scss", gulp.series("sass"));
     gulp.watch("src/*.html", gulp.series("html"));
     gulp.watch("public/*").on("change", browserSync.reload);
   })

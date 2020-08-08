@@ -7,10 +7,207 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="cdt-container">
-      <div class="h1">
-        Kodhus ui framework
+    <header>
+      <div class="cdt-top-nav border">
+        <div class="logo">
+          <a href="#">Logo here</a>
+        </div>
+        <span class="mobile-trigger">
+          <span></span>
+        </span>
+        <div class="navigations menu-right">
+          <nav>
+            <ul>
+              <li><a href="#">Why Kodhus?</a></li>
+              <li><a href="#">Prototypes</a></li>
+              <li class="selected"><a href="#">About Us</a></li>
+              <li><a href="#">Your team</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
+    </header>
+    <div class="cdt-container">
+      <p>Typography</p>
+      <h1>Headings Color Contrast 21.00 (AAA)</h1>
+      <p class="cdt-margin-bottom-lg">
+        Apparently we had reached a great height in the atmosphere, for the sky
+        was a dead black, and the stars had ceased to twinkle. By the same
+        illusion which lifts the horizon of the sea to the level of the
+        spectator on a hillside, the sable cloud beneath was dished out, and the
+        car seemed to float in the middle of an
+        <a href="#">immense dark</a> sphere, whose upper half was strewn with
+        silver. Looking down into the dark gulf below, I could see a ruddy light
+        streaming through a rift in the clouds. Body Color Contrast: 17.04 (AAA)
+      </p>
+      <div class="cdt-divider cdt-margin-bottom-lg"></div>
+      <form class="cdt-form">
+        <div class="cdt-controls">
+          <label for="password">Email</label>
+          <input type="text" placeholder="Enter your email address" />
+        </div>
+      </form>
+      <div class="cdt-form">
+        <p>If you want input and label be on the same row:</p>
+        <div class="cdt-controls cdt-row">
+          <label class="cdt-1 cdt-label" for="">Username</label>
+          <div class="cdt-4">
+            <input type="text" />
+          </div>
+        </div>
+        <div class="cdt-controls cdt-row">
+          <label class="cdt-1 cdt-label" for="">Password</label>
+          <div class="cdt-4">
+            <input type="text" />
+          </div>
+        </div>
+      </div>
+      <div class="cdt-controls">
+        <div>
+          <span class="cdt-checkbox">
+            <input type="checkbox" id="checkbox-1" />
+            <label for="checkbox-1">Email</label>
+          </span>
+        </div>
+        <div>
+          <span class="cdt-checkbox">
+            <input type="checkbox" id="checkbox-2" checked />
+            <label for="checkbox-2">Push notification</label>
+          </span>
+        </div>
+        <div>
+          <span class="cdt-checkbox">
+            <input type="checkbox" id="checkbox-3" />
+            <label for="checkbox-3">SMS</label>
+          </span>
+        </div>
+      </div>
+      <div class="cdt-controls">
+        <div>
+          <span class="cdt-radio">
+            <input type="radio" id="radio-1" name="radios" />
+            <label for="radio-1">Option 1</label>
+          </span>
+        </div>
+        <div>
+          <span class="cdt-radio">
+            <input type="radio" id="radio-2" name="radios" checked />
+            <label for="radio-2">Option 2</label>
+          </span>
+        </div>
+        <div>
+          <span class="cdt-radio">
+            <input type="radio" id="radio-3" name="radios" />
+            <label for="radio-3">Option 3</label>
+          </span>
+        </div>
+      </div>
+      <div class="cdt-constrols">
+        <span class="cdt-toggle">
+          <input type="checkbox" id="toggle-1" />
+          <label for="toggle-1">Enable push notification</label>
+        </span>
+      </div>
+
+      <div class="cdt-list">
+        <header>
+          List header (Optional)
+        </header>
+        <ul>
+          <li>
+            <div class="cdt-list-item">
+              <span class="avatar">
+                Avatar (Optional)
+              </span>
+              <div class="item">
+                list item
+              </div>
+              <div class="extra">Extra (Optional)</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <footer class="cdt-footer">
+        <div class="cdt-container">
+          <div class="link-container">
+            <div class="cdt-row">
+              <div class="cdt-8">
+                <div class="cdt-row">
+                  <div class="cdt-3">
+                    <h5>Navi</h5>
+                    <ul>
+                      <li>
+                        <a href="#">Home</a>
+                      </li>
+                      <li>
+                        <a href="#">Discover</a>
+                      </li>
+                      <li><a href="#">Dashboard</a></li>
+                      <li>
+                        <a href="#">Howto</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="cdt-3">
+                    <h5>About</h5>
+                    <ul>
+                      <li><a href="#">Our team</a></li>
+                      <li><a href="#">Company</a></li>
+                      <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                  </div>
+                  <div class="cdt-3">
+                    <h5>Learn</h5>
+                    <ul>
+                      <li><a href="#">Work</a></li>
+                      <li><a href="#">Career</a></li>
+                      <li><a href="#">Blog</a></li>
+                    </ul>
+                  </div>
+                  <div class="cdt-3">
+                    <h5>Resources</h5>
+                    <ul>
+                      <li>
+                        <a href="#">Developers</a>
+                      </li>
+                      <li><a href="#">Tutorials</a></li>
+                      <li><a href="#">Documentation</a></li>
+                      <li><a href="#">Updates</a></li>
+                      <li><a href="#">Support</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="cdt-4">
+                <div class="newsletter-box">
+                  <h6>Stay in Touch</h6>
+                  <p>
+                    Never miss important things by signing up to our newsletter
+                  </p>
+                  <div class="signup">
+                    <input type="text" placeholder="Your email address" />
+                    <button class="cdt-btn cdt-btn-rounded">Signup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-sub border">
+            <p>@2020. website name</p>
+            <span class="social-media">
+              <a href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+              <a href="#">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+              <a href="#">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
   <script src="kodhus.min.js"></script>

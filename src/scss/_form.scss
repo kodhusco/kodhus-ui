@@ -21,7 +21,7 @@
     }
   }
   label {
-    color: #333;
+    color: $color-higher;
   }
 
   .cdt-label {
@@ -39,14 +39,31 @@
     }
   }
 }
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: $color-high;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $color-high;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: $color-high;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: $color-high;
+}
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-  color: #333;
+  background-color: $color-bg;
+  color: inherit;
   display: block;
   margin: 4px 0;
   font-size: 16px;
-  border: 2px solid #bbb;
+  border: 2px solid $color-mid;
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
@@ -79,20 +96,19 @@ input[type="email"] {
     position: relative;
     select {
       width: 100%;
-      border: 1px solid #bbb;
+      border: 1px solid $color-mid;
       &:focus {
         border-color: $primary-color;
       }
       font-size: inherit;
       padding: 10px;
-      color: #333;
+      color: $color-highest;
       border-radius: 3px;
       outline: 0;
       box-sizing: border-box;
       vertical-align: middle;
       -webkit-appearance: none;
       -moz-appearance: none;
-      color: #333;
       position: relative;
       cursor: pointer;
     }
@@ -103,7 +119,7 @@ input[type="email"] {
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      color: #333;
+      color: $color-highest;
       pointer-events: none;
     }
   }
@@ -113,7 +129,7 @@ input[type="email"] {
     align-items: center;
     label {
       padding: 0 8px;
-      color: #333;
+      color: $color-highest;
       cursor: pointer;
     }
     input[type="checkbox"] {
@@ -140,7 +156,7 @@ input[type="email"] {
       width: 40px;
       height: 20px;
       border-radius: 50px;
-      background: #bbb;
+      background: $color-mid;
       cursor: pointer;
       transition: all 0.1s;
       z-index: 1;
@@ -176,7 +192,7 @@ input[type="email"] {
 
     label {
       padding-left: 30px;
-      color: #333;
+      color: $color-highest;
       cursor: pointer;
       position: relative;
       &:before {
@@ -190,7 +206,7 @@ input[type="email"] {
         transform: translateY(-50%);
         left: 0;
         border-radius: 2px;
-        border: 2px solid #bbb;
+        border: 2px solid $color-mid;
         background: #fff;
         cursor: pointer;
       }
@@ -231,7 +247,7 @@ input[type="email"] {
     }
     label {
       padding-left: 30px;
-      color: #333;
+      color: $color-highest;
       cursor: pointer;
       &:before {
         content: "";
@@ -242,7 +258,7 @@ input[type="email"] {
         border-radius: 50%;
         top: 0;
         left: 0;
-        border: 2px solid #bbb;
+        border: 2px solid $color-mid;
         background: #fff;
         cursor: pointer;
       }
