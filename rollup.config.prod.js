@@ -1,24 +1,20 @@
-import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
+import babel from "rollup-plugin-babel";
+import { uglify } from "rollup-plugin-uglify";
+import babelrc from "babelrc-rollup";
 
-const { version } = require('./package.json');
+const { version } = require("./package.json");
 
 export default {
-  input: 'src/js/kodhus.js',
+  input: "src/js/kodhus.js",
   output: {
-    name: 'Kodhus',
+    name: "Kodhus",
     file: `dist/kodhus-${version}.min.js`,
-    format: 'iife',
+    format: "iife",
     banner: `/*!
     * Kodhus v${version}
     * Copyright 2018 Kodhus (https://kodhus.com)
     * Licensed under MIT (https://github.com/Kodhuset/kodhus-ui/blob/master/LICENSE.md)
     */`,
   },
-  plugins: [
-    babel({
-      exclude: 'node_modules/**',
-    }),
-    uglify(),
-  ],
+  plugins: [babel(babelrc()), uglify()],
 };

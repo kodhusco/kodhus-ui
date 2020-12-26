@@ -1,0 +1,124 @@
+.cdt {
+  $dialog-padding: 24px;
+  $dialog-border-colors: var(--color-lower);
+  $close-icon-color: var(--color-higher);
+  box-sizing: border-box;
+  &-dialog {
+    &-container {
+      transition: all 0.2s;
+      transform-origin: 50% 50%;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 9;
+      background: rgba(0, 0, 0, 0.4);
+      visibility: visible;
+      opacity: 1;
+      .cdt-dialog {
+        transform: translate(-50%, calc(-50%)) scale(1);
+        transform-origin: 50% 50%;
+      }
+      &.hide {
+        visibility: hidden;
+        transform-origin: 50% 50%;
+        opacity: 0;
+        .cdt-dialog {
+          transform: translate(-50%, -50%) scale(0.7);
+        }
+      }
+    }
+    transition: all 0.2s;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform-origin: 50% 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: var(--color-bg);
+    border-radius: 3px;
+    width: 560px;
+    min-height: 40px;
+    box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+      0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+    &.with-borders {
+      header {
+        border-bottom: 1px solid $dialog-border-colors;
+        align-items: center;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          margin-bottom: 0;
+        }
+      }
+      .actions {
+        border-top: 1px solid $dialog-border-colors;
+      }
+    }
+    header {
+      height: 64px;
+      box-sizing: border-box;
+      padding: $dialog-padding;
+      .close {
+        cursor: pointer;
+        width: 20px;
+        position: relative;
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          background: $close-icon-color;
+          transform-origin: 50%;
+          left: 0;
+          top: 0;
+        }
+        &:before {
+          transform: rotate(45deg);
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    main {
+      font-size: 16px;
+      .content {
+        padding: 10px $dialog-padding 15px $dialog-padding;
+      }
+    }
+    .actions {
+      display: flex;
+      padding: 10px 10px;
+      justify-content: flex-end;
+      align-items: center;
+      button {
+        margin-left: 5px;
+        font-weight: bold;
+      }
+    }
+    &.flexi {
+      display: flex;
+      flex-direction: column;
+      z-index: 9999999;
+      left: 50%;
+      top: 50%;
+      width: 100vw;
+      height: 100vh;
+      header {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 0;
+      }
+      main {
+        flex: 1;
+        overflow: auto;
+      }
+    }
+  }
+}

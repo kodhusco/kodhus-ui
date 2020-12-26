@@ -7,6 +7,9 @@ import postcss from "gulp-postcss";
 import autoprefixer from "autoprefixer";
 import { rollup } from "rollup";
 import file from "gulp-file";
+import uglify from "gulp-uglify";
+import concat from "gulp-concat";
+import babel from "gulp-babel";
 
 // const gulp = require("gulp");
 // const browserSync = require("browser-sync").create();
@@ -15,8 +18,7 @@ import file from "gulp-file";
 // const rename = require("gulp-rename");
 // const postcss = require("gulp-postcss");
 // const autoprefixer = require("autoprefixer");
-import babel from "rollup-plugin-babel";
-import { uglify } from "rollup-plugin-uglify";
+//import babel from "rollup-plugin-babel";
 
 //const { version } = require("./package.json");
 import { version } from "./package.json";
@@ -52,8 +54,22 @@ gulp.task("sass", () =>
     .pipe(postcss([autoprefixer()]))
     .pipe(rename({ suffix: `.min` }))
     .pipe(gulp.dest("dist"))
-    .pipe(gulp.dest("public"))
+    .pipe(gulp.dest("public/assets/css"))
     .pipe(browserSync.stream())
+);
+
+gulp.task("js", () =>
+  gulp
+    .src("src/js/components/*.js")
+    .pipe(
+      babel({
+        presets: ["@babel/preset-env"],
+      })
+    )
+    // .pipe(jshint())   // Remove js hint node package as well ->  gulp-jshint
+    // .pipe(uglify())
+    .pipe(concat("app.js"))
+    .pipe(gulp.dest("public/assets/js"))
 );
 
 gulp.task("html", () =>
@@ -63,12 +79,19 @@ gulp.task("html", () =>
     .pipe(browserSync.reload({ stream: true }))
 );
 
-gulp.task("js", () => {
+gulp.task("fonts", () =>
+  gulp
+    .src("./src/fonts/*")
+    .pipe(gulp.dest("./public/assets/fonts"))
+    .pipe(browserSync.reload({ stream: true }))
+);
+
+gulp.task("kodhus-js", () => {
   return rollup({
     input: "src/js/kodhus.js",
     output: {
       name: "Kodhus",
-      file: `public/kodhus-${version}.min.js`,
+      file: `public/assets/js/kodhus-${version}.min.js`,
       format: "iife",
       banner: `/*!
         * Kodhus v${version}
@@ -94,15 +117,15 @@ gulp.task("js", () => {
   })
     .then((bundle) => {
       return bundle.generate({
-        format: "umd",
+        format: "iife",
         moduleName: "myModuleName",
         output: {
-          name: "kodhus",
+          name: "Kodhus",
         },
       });
     })
     .then((gen) => {
-      return file(`kodhus.min.js`, gen.code, { src: true }).pipe(
+      return file(`assets/js/kodhus.min.js`, gen.code, { src: true }).pipe(
         gulp.dest("public/")
       );
     });
@@ -132,14 +155,20 @@ gulp.task("sass-build-min-latest", () =>
 
 gulp.task(
   "serve",
-  gulp.series("sass", "html", "js", () => {
+  gulp.series("sass", "html", "kodhus-js", "js", "fonts", () => {
     browserSync.init({
       server: {
         baseDir: "./public",
+        middleware: function (req, res, next) {
+          res.setHeader("Access-Control-Allow-Origin", "*");
+          next();
+        },
       },
       notify: false,
     });
-    gulp.watch("src/scss/*.scss", gulp.series("sass"));
+    gulp.watch("src/scss/**/*.scss", gulp.series("sass"));
+    gulp.watch("src/js/kodhus.js", gulp.series("kodhus-js"));
+    gulp.watch("src/js/components/*.js", gulp.series("js"));
     gulp.watch("src/*.html", gulp.series("html"));
     gulp.watch("public/*").on("change", browserSync.reload);
   })

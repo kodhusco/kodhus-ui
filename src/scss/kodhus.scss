@@ -1,31 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-@import "colors";
-@import "globals";
-@import "iconfonts";
-@import "breakpoints";
-@import "typography";
-@import "form";
-@import "element";
-@import "dialog";
-@import "header";
-@import "card";
-@import "_tabs";
-@import "list";
-@import "grid";
-@import "navigation";
-@import "button";
-@import "table";
-@import "notification";
-@import "_contextual";
-@import "_carousel";
-@import "stepprogressbar";
-@import "breadcrumb";
-@import "dropdown";
-@import "ad";
-@import "badge";
-@import "footer";
-@import "autocomplete";
+@import "kodhus/_kodhus-lib";
+@import "globals/_globals";
 
-@import "shame";
+@import "components/main.scss";

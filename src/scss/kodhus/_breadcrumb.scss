@@ -1,0 +1,30 @@
+.cdt {
+  $active-color: var(--color-higher);
+  &-breadcrumb {
+    border-radius: 3px;
+    font-size: 15px;
+    &.transparent {
+      background: none;
+    }
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-right: 2px;
+        a {
+          text-decoration: none;
+          color: var(--color-higher);
+        }
+        &:last-child {
+          color: $active-color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+$gray-color: #888;
+$logo-color: #333;
+$border-color: #eee;
+$font-size: 16px;
+.cdt {
+  &-footer {
+    color: var(--color-mid);
+    padding: 10px;
+    .newsletter-box {
+      margin-top: 10px;
+      p {
+        color: var(--color-mid);
+      }
+      .signup {
+        display: flex;
+        input {
+          margin: 0 5px 0 0;
+        }
+      }
+    }
+    .social-media {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      ion-icon {
+        font-size: 20px;
+      }
+      a {
+        text-decoration: none;
+        color: var(--color-mid);
+        transition: all 0.3s;
+        &:hover {
+          color: darken($gray-color, 30);
+        }
+      }
+      & > * {
+        padding: 0 5px;
+      }
+    }
+    .logo {
+      margin-top: 10px;
+      a {
+        color: $logo-color;
+        text-decoration: none;
+      }
+    }
+    ul {
+      list-style: none;
+      @media screen and (max-width: 1024px) {
+        flex-direction: column;
+      }
+      padding: 0;
+      li {
+        padding: 6px 0;
+        a {
+          color: var(--color-mid);
+          text-decoration: none;
+          transition: all 0.3s;
+          &:hover {
+            color: var(--color-higher);
+          }
+        }
+      }
+    }
+    .footer-sub {
+      @media screen and (max-width: 1024px) {
+        margin-top: 20px;
+      }
+      &.border {
+        border-top: 1px solid var(--color-lower);
+      }
+      display: flex;
+      padding-top: 10px;
+      justify-content: space-between;
+      color: var(--color-medium);
+    }
+    &.v1 {
+      .cdt-container {
+        width: 100%;
+      }
+      .footer-sub {
+        text-align: center;
+        .social-media {
+          margin-top: 5px;
+        }
+        justify-content: center;
+        @media screen and (max-width: 1024px) {
+          text-align: left;
+          .social-media {
+            margin-top: 5px;
+            justify-content: flex-start;
+          }
+        }
+        flex-direction: column;
+        margin-top: 0;
+      }
+      ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
+  }
+}
