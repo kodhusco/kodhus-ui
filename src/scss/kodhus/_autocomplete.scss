@@ -10,6 +10,10 @@
   [class*=" icon-"] {
     color: #999;
   }
+  div:nth-child(2) {
+    flex: 1;
+  }
+
 
   input {
     margin: 0;
@@ -50,7 +54,7 @@
         padding: 10px;
       }
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.1s;
       &:not(:last-child) {
         border-bottom: 1px solid #ccc;
       }

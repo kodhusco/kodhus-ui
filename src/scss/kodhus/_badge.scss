@@ -5,12 +5,16 @@
   align-items: center;
   color: var(--color-lower);
   justify-content: center;
-  padding: 3px 5px;
+  padding: 3px 10px;
   &.rounded {
     border-radius: 50px;
   }
   &.hallow {
     background: var(--color-lowest);
     color: var(--color-higher);
+  }
+  &.transparent {
+    color: var(--color-higher);
+    background: transparent;
   }
 }

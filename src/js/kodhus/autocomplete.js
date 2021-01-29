@@ -35,7 +35,6 @@ class Autocomplete {
 
     this.autoCompleteInput.addEventListener("keyup", (e) => {
       const input = this.autoCompleteInput.value;
-      console.log(prevSearchTerm, input);
       if (input !== prevSearchTerm) {
         currentIndex = -1;
       }
@@ -47,12 +46,12 @@ class Autocomplete {
       if (e.key === "Enter") {
         if (currentIndex !== -1) {
           location.href = this.output[currentIndex].url;
+          return;
         }
-        return;
         this.autoCompleteInput.value = "";
         resetSelectedSuggestion();
         clearSuggestions();
-        this.callback(this.output);
+        this.callback(this.output, input);
         return;
       }
 

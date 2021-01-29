@@ -1,5 +1,4 @@
 .cdt {
-  $active-color: var(--color-higher);
   &-breadcrumb {
     border-radius: 3px;
     font-size: 15px;
@@ -22,7 +21,7 @@
           color: var(--color-higher);
         }
         &:last-child {
-          color: $active-color;
+          color: var(--color-higher);;
         }
       }
     }

@@ -24,6 +24,7 @@
       }
     }
     .tabs {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -44,21 +45,6 @@
         display: flex;
         align-items: center;
         color: var(--color-mid);
-        &.selected {
-          color: var(--primary-color);
-          &:after {
-            content: "";
-            width: 100%;
-            height: 2px;
-            position: absolute;
-            background-color: var(--primary-color);
-            left: 0;
-            bottom: 0;
-          }
-          a {
-            color: var(--primary-color);
-          }
-        }
         &:hover {
           color: var(--primary-color);
           a {
@@ -94,6 +80,39 @@
         display: none;
         &.show {
           display: block;
+        }
+      }
+    }
+    &.moving--tab-selector {
+      .tab-selector {
+        position: absolute;
+        height: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom: 2px solid var(--primary-color);;
+        transition: transform;
+        transform-origin: 0%;
+      }
+    }
+    &:not(.moving--tab-selector) {
+      .tabs ul {
+        > li {
+          &.selected {
+            color: var(--primary-color);
+            &:after {
+              content: "";
+              width: 100%;
+              height: 2px;
+              position: absolute;
+              background-color: var(--primary-color);
+              left: 0;
+              bottom: 0;
+            }
+            a {
+              color: var(--primary-color);
+            }
+          }
         }
       }
     }
