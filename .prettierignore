@@ -1,0 +1,7 @@
+# Ignore artifacts:
+dist
+public
+src/fonts
+
+# Ignore all HTML files:
+*.html
