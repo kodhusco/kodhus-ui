@@ -1,4 +1,6 @@
 @import "kodhus/_kodhus-lib";
 @import "globals/_globals";
 
-@import "components/main.scss";
+@import "components/**/*.scss";
+
+
