@@ -4,3 +4,5 @@ dist/
 public/
 id_rsa_kodhus
 id_rsa_kodhus.pub
+.vscode
+.vscode/

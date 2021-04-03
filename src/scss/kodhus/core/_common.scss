@@ -1,0 +1,41 @@
+:root {
+    // radius variables
+    --radius-sm: calc(var(--radius) / 1.8);
+    --radius-md: var(--radius);
+    --radius-lg: calc(var(--radius) * 1.8);
+    --radius-xlg: calc(var(--radius) * 2);
+    --radius-xxlg: calc(var(--radius) * 3);
+
+    // shadow variables
+    --shadow-xs: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --shadow-sm: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --shadow-md:  0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    --shadow-lg: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    --shadow-xlg: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+    // spacing variables
+    --space-xxxxsm: calc(0.125 * var(--space-base)); 
+    --space-xxxsm: calc(0.25 * var(--space-base));
+    --space-xxsm: calc(0.375 * var(--space-base));
+    --space-xsm: calc(0.5 * var(--space-base));
+    --space-sm: calc(0.75 * var(--space-base));
+    --space-md: calc(1.25 * var(--space-base));
+    --space-lg: calc(2 * var(--space-base));
+    --space-xlg: calc(3.25 * var(--space-base));
+    --space-xxlg: calc(5.25 * var(--space-base));
+    --space-xxxlg: calc(8.5 * var(--space-base));
+    --space-xxxxlg: calc(13.75 * var(--space-base));
+
+    // size variables
+    --size-xxxxsm: 0.25rem;
+    --size-xxxsm: 0.5rem;
+    --size-xxsm: 0.75rem;
+    --size-xsm: 1rem; 
+    --size-sm: 1.5rem;
+    --size-md: 2rem; 
+    --size-lg: 3rem; 
+    --size-xlg: 4rem; 
+    --size-xxlg: 5rem; 
+    --size-xxxlg: 8rem;
+    --size-xxxxlg: 16rem;
+}

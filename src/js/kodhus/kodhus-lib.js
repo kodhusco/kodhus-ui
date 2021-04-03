@@ -14,7 +14,7 @@ import Button from "./button";
 
 (() => {
   document.querySelectorAll("pre code").forEach((block) => {
-    if (hljs) {
+    if (typeof hljs !== 'undefined') {
       hljs.highlightBlock(block);
     }
   });

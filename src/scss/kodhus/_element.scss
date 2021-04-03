@@ -5,7 +5,7 @@
 p {
     margin-top: 0;
     margin-bottom: 0.8rem;
-    line-height: 1.4rem;
+    line-height: var(--line-height-default);
 }
 pre {
     margin: 0;
