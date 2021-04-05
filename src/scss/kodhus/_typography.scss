@@ -85,10 +85,10 @@ p {
   --text-sm: calc(var(--text-base));
   --text-md: calc(var(--text-sm) * var(--scale-factor));
   --text-lg: calc(var(--text-md) * var(--scale-factor));
-  --text-xl: calc(var(--text-lg) * var(--scale-factor));
-  --text-xxl: calc(var(--text-xl) * var(--scale-factor));
-  --text-xxxl: calc(var(--text-xxl) * var(--scale-factor));
-  --text-xxxxl: calc(var(--text-xxxl) * var(--scale-factor));
+  --text-xlg: calc(var(--text-lg) * var(--scale-factor));
+  --text-xxlg: calc(var(--text-xlg) * var(--scale-factor));
+  --text-xxxlg: calc(var(--text-xxlg) * var(--scale-factor));
+  --text-xxxxlg: calc(var(--text-xxxlg) * var(--scale-factor));
 
   --line-height-default: 1.4;
   --line-height-sm: 1.2;

@@ -1,3 +1,7 @@
+:root {
+  --carousel-arrow-color: var(--color-higher);
+  --carousel-dot-color: var(--color-higher);
+}
 .cdt-carousel:not([data-carousel-type="slide-multi"]) section {
   position: absolute;
   width: 100%;
@@ -54,7 +58,7 @@
       content: "";
       width: 20px;
       height: 3px;
-      background: var(--color-higher);
+      background: var(--carousel-arrow-color);
       top: 50%;
       left: 12px;
       position: absolute;
@@ -116,8 +120,8 @@
       span {
         width: 10px;
         height: 10px;
-        background: var(--color-highest);
-        opacity: 0.3;
+        background: var(--carousel-dot-color);
+        opacity: 0.6;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);

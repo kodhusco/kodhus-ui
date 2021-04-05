@@ -19,6 +19,7 @@ class Carousel {
   init(selector) {
     this.inTransition = false;
     this.slideDelay = 1000;
+    this.transitionTime = 1000;
     this.autoSlide = false;
     this.infinite = false;
     this.autoslideInterval = null;
@@ -29,14 +30,19 @@ class Carousel {
     }
 
     if (this.carousel) {
-      this.carouselType = this.carousel.getAttribute("data-carousel-type");
-      let autoSlide = false;
+      this.carouselType =
+        this.carousel.getAttribute("data-carousel-type") || "none";
       if (this.carousel.getAttribute("data-auto-slide") === "true") {
         this.autoSlide = true;
       } else {
         this.autoSlide = false;
       }
       this.slideDelay = this.carousel.getAttribute("data-slide-delay");
+      this.transitionTime = this.carousel.getAttribute(
+        "data-transition-duration"
+      )
+        ? parseInt(this.carousel.getAttribute("data-transition-duration"))
+        : this.transitionTime;
 
       if (this.carousel.getAttribute("data-infinite") === "true") {
         this.infinite = true;
@@ -72,17 +78,16 @@ class Carousel {
       }
       if (this.arrowRight) {
         this.arrowRight.addEventListener("click", () => {
-          console.log("called to move right");
           this.moveForward();
         });
       }
 
       this.initCarousel();
+      this.setArrowsVisibility(0);
     }
   }
 
   slide() {
-    console.log(this.autoSlide, this.autoslideInterval);
     if (!this.autoSlide) {
       if (this.autoslideInterval) {
         clearInterval(this.autoslideInterval);
@@ -90,7 +95,6 @@ class Carousel {
       }
       return;
     }
-    console.log("enabling autoslide", this.slideDelay);
     this.infinite = true;
     this.autoslideInterval = setInterval(() => {
       this.moveForward();
@@ -112,10 +116,9 @@ class Carousel {
         this.runCarousel(index);
       });
     });
+    this.setAutoSlide();
   }
-
-  runCarousel(index, dir) {
-    if (this.inTransition) return;
+  setArrowsVisibility(index) {
     if (!this.infinite && index === this.numElements - 1) {
       this.arrowRight.style.display = "none";
     } else {
@@ -126,12 +129,16 @@ class Carousel {
     } else {
       this.arrowLeft.style.display = "block";
     }
+  } 
+  runCarousel(index, dir) {
+    if (this.inTransition) return;
+    this.setArrowsVisibility(index);
     /* setting z-index of all to 0 */
     if (this.carouselType !== "slide-sense") {
       this.resetSections();
     }
     if (this.carouselType === "slide-sense") {
-      this.carouselSlideSenseContainer.style.transition = "transform 1s";
+      this.carouselSlideSenseContainer.style.transition = `transform ${this.transitionTime}ms`;
       this.carouselSlideSenseContainer.style.transform = `translateX(${
         -index * 25
       }%)`;
@@ -167,7 +174,6 @@ class Carousel {
         control.classList.remove("selected");
       });
     }
-
     setTimeout(() => {
       this.inTransition = true;
       if (this.carouselType === "slide-sense") {
@@ -181,7 +187,9 @@ class Carousel {
           }
         );
       } else {
-        this.sections[this.selected].style.transition = "transform 1s";
+        this.sections[
+          this.selected
+        ].style.transition = `transform ${this.transitionTime}ms`;
         if (this.carouselType === "fade") {
           this.sections[index].style.zIndex = 6;
           this.sections[index].style.opacity = 1;
@@ -189,7 +197,9 @@ class Carousel {
           this.inTransition = false;
         }
         if (this.carouselType === "slide") {
-          this.sections[index].style.transition = "transform 1s";
+          this.sections[
+            index
+          ].style.transition = `transform ${this.transitionTime}ms`;
         }
 
         if (this.carouselType === "overlay" || this.carouselType === "slide") {
@@ -210,6 +220,13 @@ class Carousel {
           }
           this.sections[index].style.transform = "translateX(0)";
           this.sections[index].style.transform = "translateX(0)";
+        }
+        if (this.carouselType === "none") {
+            this.sections.forEach((section) => (section.style.zIndex = null));
+            this.resetSections();
+            this.sections[index].style.zIndex = 6;
+            this.selected = index;
+            this.inTransition = false;
         }
         if (this.controls.length)
           this.controls[index].classList.add("selected");
@@ -287,15 +304,7 @@ class Carousel {
       }
       return;
     }
-    if (this.carouselType === "slide-multi") {
-      if (this.page <= this.maxPages - 1) {
-        this.page++;
-        this.carouselItemContainer.style.transform = `translate(-${
-          this.page * this.carousel.offsetWidth
-        }px)`;
-      }
-      return;
-    }
+
     if (this.selected === this.numElements - 1 && !this.infinite) return;
     let index = 0;
     if (this.selected + 1 >= this.numElements) {
@@ -312,8 +321,7 @@ class Carousel {
   setCarouselType(carouselType) {
     this.carouselType = carouselType;
   }
-  setAutoSlide(autoSlide) {
-    this.autoSlide = autoSlide;
+  setAutoSlide() {
     this.slide();
   }
   setOpacityDuration(duration) {
@@ -325,7 +333,6 @@ class Carousel {
   }
   setSlideDelay(delay) {
     this.slideDelay = delay;
-    console.log("kh slide delay", this.slideDelay);
     this.resetSections();
   }
   moveBack() {
