@@ -16,12 +16,14 @@ const whichTransitionEvent = () => {
 const transEndEventName = whichTransitionEvent();
 
 class Carousel {
-  init(selector) {
+  constructor(selector) {
     this.inTransition = false;
     this.slideDelay = 1000;
     this.transitionTime = 1000;
     this.autoSlide = false;
+    this.numElements = 0;
     this.infinite = false;
+    this.slideSenseWdith = null;
     this.autoslideInterval = null;
     if (selector) {
       this.carousel = selector;
@@ -30,6 +32,7 @@ class Carousel {
     }
 
     if (this.carousel) {
+      this.numElements = this.carousel.querySelectorAll('section').length;
       this.carouselType =
         this.carousel.getAttribute("data-carousel-type") || "none";
       if (this.carousel.getAttribute("data-auto-slide") === "true") {
@@ -39,10 +42,10 @@ class Carousel {
       }
       this.slideDelay = this.carousel.getAttribute("data-slide-delay");
       this.transitionTime = this.carousel.getAttribute(
-        "data-transition-duration"
-      )
-        ? parseInt(this.carousel.getAttribute("data-transition-duration"))
-        : this.transitionTime;
+          "data-transition-duration"
+        ) ?
+        parseInt(this.carousel.getAttribute("data-transition-duration")) :
+        this.transitionTime;
 
       if (this.carousel.getAttribute("data-infinite") === "true") {
         this.infinite = true;
@@ -56,11 +59,15 @@ class Carousel {
       this.numElements = this.sections.length;
 
       this.opacityDuration =
-        this.carouselType === "fade"
-          ? this.carousel.getAttribute("data-opacity-duration")
-          : 1000;
+        this.carouselType === "fade" ?
+        this.carousel.getAttribute("data-opacity-duration") 
+        ? this.carousel.getAttribute("data-opacity-duration") 
+        : 1000  
+        : 1000;
 
       this.carouselSlideSenseContainer = document.createElement("div");
+      this.slideSenseWdith = this.numElements * 100;
+      this.carouselSlideSenseContainer.style.width = `${this.slideSenseWdith}%`
       this.carouselItemContainer = document.createElement("div");
 
       this.selected = 0;
@@ -83,7 +90,9 @@ class Carousel {
       }
 
       this.initCarousel();
-      this.setArrowsVisibility(0);
+      if (this.controls.length) {
+        this.setArrowsVisibility(0);
+      }
     }
   }
 
@@ -113,26 +122,35 @@ class Carousel {
     this.controls.forEach((control, index) => {
       control.addEventListener("click", () => {
         if (index === this.selected) return;
-        this.runCarousel(index);
+        if (index > this.selected) {
+          this.runCarousel(index, 'right');
+        } else {
+          this.runCarousel(index, 'left');
+        }
+        
+        
       });
     });
     this.setAutoSlide();
   }
   setArrowsVisibility(index) {
     if (!this.infinite && index === this.numElements - 1) {
-      this.arrowRight.style.display = "none";
+      this.arrowRight.classList.add('hide');
     } else {
-      this.arrowRight.style.display = "block";
+      this.arrowRight.classList.remove('hide');
     }
     if (!this.infinite && index === 0) {
-      this.arrowLeft.style.display = "none";
+      this.arrowLeft.classList.add('hide');
     } else {
-      this.arrowLeft.style.display = "block";
+      this.arrowRight.classList.remove('hide');
     }
-  } 
+  }
   runCarousel(index, dir) {
     if (this.inTransition) return;
-    this.setArrowsVisibility(index);
+
+    if (this.controls.length) {
+      this.setArrowsVisibility(index);
+    }
     /* setting z-index of all to 0 */
     if (this.carouselType !== "slide-sense") {
       this.resetSections();
@@ -140,7 +158,7 @@ class Carousel {
     if (this.carouselType === "slide-sense") {
       this.carouselSlideSenseContainer.style.transition = `transform ${this.transitionTime}ms`;
       this.carouselSlideSenseContainer.style.transform = `translateX(${
-        -index * 25
+        -index * 100 / this.numElements
       }%)`;
       this.selected = index;
     }
@@ -158,11 +176,13 @@ class Carousel {
           (index > this.selected && index !== this.numElements - 1) ||
           (dir && dir === "right")
         ) {
+          this.sections[this.selected].style.transform = "translateX(0%)";
           this.sections[index].style.transform = "translateX(100%)";
         } else {
+          this.sections[this.selected].style.transform = "translateX(0%)";
           this.sections[index].style.transform = "translateX(-100%)";
         }
-      } else if (index > this.selected) {
+      } else if (index >= this.selected) {
         this.sections[index].style.transform = "translateX(100%)";
       } else {
         this.sections[index].style.transform = "translateX(-100%)";
@@ -187,22 +207,18 @@ class Carousel {
           }
         );
       } else {
-        this.sections[
-          this.selected
-        ].style.transition = `transform ${this.transitionTime}ms`;
         if (this.carouselType === "fade") {
           this.sections[index].style.zIndex = 6;
           this.sections[index].style.opacity = 1;
           this.selected = index;
           this.inTransition = false;
         }
-        if (this.carouselType === "slide") {
-          this.sections[
-            index
-          ].style.transition = `transform ${this.transitionTime}ms`;
-        }
 
         if (this.carouselType === "overlay" || this.carouselType === "slide") {
+          this.sections[index].style.transition = `transform ${this.transitionTime}ms`;
+          this.sections[
+            this.selected
+          ].style.transition = `transform ${this.transitionTime}ms`;
           if (this.infinite) {
             if (
               (index > this.selected && index !== this.numElements - 1) ||
@@ -218,39 +234,42 @@ class Carousel {
           } else {
             this.sections[this.selected].style.transform = "translateX(100%)";
           }
-          this.sections[index].style.transform = "translateX(0)";
-          this.sections[index].style.transform = "translateX(0)";
+          this.sections[index].style.transform = "translateX(0%)";
         }
         if (this.carouselType === "none") {
-            this.sections.forEach((section) => (section.style.zIndex = null));
-            this.resetSections();
-            this.sections[index].style.zIndex = 6;
-            this.selected = index;
-            this.inTransition = false;
+          this.sections.forEach((section) => (section.style.zIndex = null));
+          this.resetSections();
+          this.sections[index].style.zIndex = 6;
+          this.selected = index;
+          this.inTransition = false;
         }
         if (this.controls.length)
           this.controls[index].classList.add("selected");
         let transitionCounter = 0;
+        const context = this;
         this.sections[this.selected].addEventListener(
           transEndEventName,
-          (e) => {
+          function cb(e) {
+
+            context.sections[context.selected].removeEventListener('transitionend', cb);
+            window.dispatchEvent(new CustomEvent('selectedIndex', {detail: {index}}));
+            console.log('this happens');
             transitionCounter += 1;
-            if (transitionCounter === 1 && e.propertyName === "transform") {
-              this.sections[this.selected].style.transform = "";
-              this.sections[this.selected].style.transition = "";
-              this.sections[index].style.transform = "";
-              this.sections[index].style.transition = "";
-              if (this.carouselType === "overlay") {
-                this.sections[this.selected].style.zIndex = 6;
-                this.sections[index].style.zIndex = 7;
-              } else if (this.carouselType === "slide") {
-                this.resetSections();
-                this.sections[this.selected].style.zIndex = 5;
-                this.sections[index].style.zIndex = 6;
-              }
-              this.selected = index;
-              this.inTransition = false;
+            context.sections[context.selected].style.transform = null;
+            context.sections[context.selected].style.transition = null;
+            context.sections[index].style.transform = null;
+            context.sections[index].style.transition = null;
+            if (context.carouselType === "overlay") {
+              context.sections[context.selected].style.zIndex = 6;
+              context.sections[index].style.zIndex = 7;
+            } else if (context.carouselType === "slide") {
+              context.resetSections();
+              context.sections[context.selected].style.zIndex = 5;
+              context.sections[index].style.zIndex = 6;
             }
+            context.selected = index;
+            context.inTransition = false;
+            transitionCounter = 0;
           }
         );
       }
@@ -264,7 +283,7 @@ class Carousel {
     }
     if (this.carouselType === "slide-multi") {
       this.carousel.style.width = "100%";
-      this.carouselItemContainer.classList.add("carousel-item-container");
+      this.carouselItemContainerf.classList.add("carousel-item-container");
       this.carousel.prepend(this.carouselItemContainer);
     }
     this.sections.forEach((section, index) => {
@@ -287,9 +306,9 @@ class Carousel {
         this.approximateNumPages =
           this.carouselItemContainer.parentElement.scrollWidth /
           this.carousel.offsetWidth;
-        this.maxPages = Number.isInteger(this.approximateNumPages)
-          ? Math.floor(this.approximateNumPages) - 1
-          : Math.ceil(this.approximateNumPages) - 1;
+        this.maxPages = Number.isInteger(this.approximateNumPages) ?
+          Math.floor(this.approximateNumPages) - 1 :
+          Math.ceil(this.approximateNumPages) - 1;
       }
     });
   }
@@ -363,6 +382,7 @@ class Carousel {
     } else {
       index = this.selected - 1;
     }
+    console.log('ind', index)
     this.runCarousel(index, "left");
   }
 }
