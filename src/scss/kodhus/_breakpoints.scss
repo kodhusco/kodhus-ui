@@ -3,3 +3,12 @@ $tablet-breakpoint: 769px;
 $desktop-breakpoint: 1024px;
 
 $breakpoints : (xsm: 25rem, sm: 48rem, md: 64rem, lg: 80rem, xlg: 90rem);
+
+@mixin setMediaQuery($breakpoint) {
+    @if ($breakpoint) {
+        @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+    
+}
