@@ -110,6 +110,50 @@
 .justify-start { justify-content: flex-start; }
 .justify-end { justify-content: flex-end; }
 
+// borders
+.border { border: 1px solid var(--color-lower); }
+.border-top { border-top: 1px solid var(--color-lower); }
+.border-bottom { border-bottom: 1px solid var(--color-lower); }
+.border-left { border-left: 1px solid var(--color-lower); }
+.border-right { border-right: 1px solid var(--color-lower); }
+
+.border-bg { border-color: var(--color-bg); }
+.border-lowest { border-color: var(--color-lowest); }
+.border-lower { border-color: var(--color-lower); }
+.border-mid { border-color: var(--color-mid); }
+.border-higher { border-color: var(--color-higher); }
+.border-highest { border-color: var(--color-highest); }
+
+.border-primary-lightest { border-color: var(--primary-color-lightest); }
+.border-primary-lighter { border-color: var(--primary-color-lighter); }
+.border-primary-color { border-color: var(--primary-color); }
+.border-primary-darker { border-color: var(--primary-color-darker); }
+.border-primary-darkest { border-color: var(--primary-color-darkest); }
+
+.border-secondary-lightest { border-color: var(--secondary-color-lightest); }
+.border-secondary-lighter { border-color: var(--secondary-color-lighter); }
+.border-secondary-color { border-color: var(--secondary-color); }
+.border-secondary-darker { border-color: var(--secondary-color-darker); }
+.border-secondary-darkest { border-color: var(--secondary-color-darkest); }
+
+.border-success-lightest { border-color: var(--success-color-lightest); }
+.border-success-lighter { border-color: var(--success-color-lighter); }
+.border-success-color { border-color: var(--success-color); }
+.border-success-darker { border-color: var(--success-color-darker); }
+.border-success-darkest { border-color: var(--success-color-darkest); }
+
+.border-warning-lightest { border-color: var(--warning-color-lightest); }
+.border-warning-lighter { border-color: var(--warning-color-lighter); }
+.border-warning-color { border-color: var(--warning-color); }
+.border-warning-darker { border-color: var(--warning-color-darker); }
+.border-warning-darkest { border-color: var(--warning-color-darkest); }
+
+.border-error-lightest { border-color: var(--error-color-lightest); }
+.border-error-lighter { border-color: var(--error-color-lighter); }
+.border-error-color { border-color: var(--error-color); }
+.border-error-darker { border-color: var(--error-color-darker); }
+.border-error-darkest { border-color: var(--error-color-darkest); }
+
 // text decoration
 .text-underline { text-decoration: underline; }
 .text-decoration-none { text-decoration: none; }
@@ -366,7 +410,23 @@
 .padding-bottom-xxxlg { padding-bottom: var(--space-xxxlg); }
 .padding-bottom-xxxxlg { padding-bottom: var(--space-xxxxlg); }
 
+.padding-left-0 { padding-left: 0; }
+.padding-left-xxxxsm { padding-left: var(--space-xxxxsm); }
+.padding-left-xxxsm { padding-left: var(--space-xxxsm); }
+.padding-left-xxsm { padding-left: var(--space-xxsm); }
+.padding-left-xsm { padding-left: var(--space-xsm); }
+.padding-left-sm { padding-left: var(--space-sm); }
+.padding-left-md { padding-left: var(--space-md); }
+.padding-left-lg { padding-left: var(--space-lg); }
+.padding-left-xlg { padding-left: var(--space-xlg); }
+.padding-left-xxlg { padding-left: var(--space-xxlg); }
+.padding-left-xxxlg { padding-left: var(--space-xxxlg); }
+.padding-left-xxxxlg { padding-left: var(--space-xxxxlg); }
+
 // margin
+.margin-x-auto { margin-left: auto; margin-right: auto; }
+
+
 .margin-0 { margin: 0; }
 .margin-xxxxsm { margin: var(--space-xxxxsm); }
 .margin-xxxsm { margin: var(--space-xxxsm); }
@@ -419,269 +479,284 @@
 .margin-bottom-xxxlg { margin-bottom: var(--space-xxxlg); }
 .margin-bottom-xxxxlg { margin-bottom: var(--space-xxxxlg); }
 
+.margin-left-0 { margin-left: 0; }
+.margin-left-xxxxsm { margin-left: var(--space-xxxxsm); }
+.margin-left-xxxsm { margin-left: var(--space-xxxsm); }
+.margin-left-xxsm { margin-left: var(--space-xxsm); }
+.margin-left-xsm { margin-left: var(--space-xsm); }
+.margin-left-sm { margin-left: var(--space-sm); }
+.margin-left-md { margin-left: var(--space-md); }
+.margin-left-lg { margin-left: var(--space-lg); }
+.margin-left-xlg { margin-left: var(--space-xlg); }
+.margin-left-xxlg { margin-left: var(--space-xxlg); }
+.margin-left-xxxlg { margin-left: var(--space-xxxlg); }
+.margin-left-xxxxlg { margin-left: var(--space-xxxxlg); }
+
 // responsive
 @each $breakpoint, $val in $breakpoints {
-    // text font sizes
-    .text-default\@#{$breakpoint} { font-size: var(--text-base); }
-    .text-sm\@#{$breakpoint} { font-size: var(--text-sm); }
-    .text-md\@#{$breakpoint} { font-size: var(--text-md); }
-    .text-lg\@#{$breakpoint} { font-size: var(--text-lg); }
-    .text-xlg\@#{$breakpoint} { font-size: var(--text-xlg); }
-    .text-xxlg\@#{$breakpoint} { font-size: var(--text-xxlg); }
-    .text-xxxlg\@#{$breakpoint} { font-size: var(--text-xxxlg); }
-    .text-xxxxlg\@#{$breakpoint} { font-size: var(--text-xxxxlg); }
+        @include setMediaQuery($breakpoint) {
+        // text font sizes
+        .text-default\@#{$breakpoint} { font-size: var(--text-base); }
+        .text-sm\@#{$breakpoint} { font-size: var(--text-sm); }
+        .text-md\@#{$breakpoint} { font-size: var(--text-md); }
+        .text-lg\@#{$breakpoint} { font-size: var(--text-lg); }
+        .text-xlg\@#{$breakpoint} { font-size: var(--text-xlg); }
+        .text-xxlg\@#{$breakpoint} { font-size: var(--text-xxlg); }
+        .text-xxxlg\@#{$breakpoint} { font-size: var(--text-xxxlg); }
+        .text-xxxxlg\@#{$breakpoint} { font-size: var(--text-xxxxlg); }
 
-    // line heights
-    .line-height-default\@#{$breakpoint} { line-height: var(--line-height-default); }
-    .line-height-sm\@#{$breakpoint} { line-height: var(--line-height-sm); }
-    .line-height-md\@#{$breakpoint} { line-height: var(--line-height-md); }
-    .line-height-lg\@#{$breakpoint} { line-height: var(--line-height-lg); }
-    .line-height-xlg\@#{$breakpoint} { line-height: var(--line-height-xlg); }
-    .line-height-xxlg\@#{$breakpoint} { line-height: var(--line-height-xxlg); }
-    .line-height-xxxlg\@#{$breakpoint} { line-height: var(--line-height-xxxlg); }
-    .line-height-xxxxlg\@#{$breakpoint} { line-height: var(--line-height-xxxxlg); }
+        // line heights
+        .line-height-default\@#{$breakpoint} { line-height: var(--line-height-default); }
+        .line-height-sm\@#{$breakpoint} { line-height: var(--line-height-sm); }
+        .line-height-md\@#{$breakpoint} { line-height: var(--line-height-md); }
+        .line-height-lg\@#{$breakpoint} { line-height: var(--line-height-lg); }
+        .line-height-xlg\@#{$breakpoint} { line-height: var(--line-height-xlg); }
+        .line-height-xxlg\@#{$breakpoint} { line-height: var(--line-height-xxlg); }
+        .line-height-xxxlg\@#{$breakpoint} { line-height: var(--line-height-xxxlg); }
+        .line-height-xxxxlg\@#{$breakpoint} { line-height: var(--line-height-xxxxlg); }
 
-    // display
-    .grid\@#{$breakpoint} { display: grid; }
-    .flex\@#{$breakpoint} { display: flex; }
-    .inline-flex\@#{$breakpoint} { display: inline-flex; }
-    .block\@#{$breakpoint} { display: block; }
-    .inline-block\@#{$breakpoint} { display: inline-block; }
-    .inline\@#{$breakpoint} { display: inline; }
-    .display-table\@#{$breakpoint} { display: table; }
-    .table-cell\@#{$breakpoint}{ display: table-cell; }
+        // display
+        .grid\@#{$breakpoint} { display: grid; }
+        .flex\@#{$breakpoint} { display: flex; }
+        .inline-flex\@#{$breakpoint} { display: inline-flex; }
+        .block\@#{$breakpoint} { display: block; }
+        .inline-block\@#{$breakpoint} { display: inline-block; }
+        .inline\@#{$breakpoint} { display: inline; }
+        .display-table\@#{$breakpoint} { display: table; }
+        .table-cell\@#{$breakpoint}{ display: table-cell; }
 
-    // text align
-    .text-justify\@#{$breakpoint} { text-align: justify; }
-    .text-center\@#{$breakpoint} { text-align: center; }
-    .text-left\@#{$breakpoint} { text-align: left; }
-    .text-right\@#{$breakpoint} { text-align: right; }
+        // text align
+        .text-justify\@#{$breakpoint} { text-align: justify; }
+        .text-center\@#{$breakpoint} { text-align: center; }
+        .text-left\@#{$breakpoint} { text-align: left; }
+        .text-right\@#{$breakpoint} { text-align: right; }
 
-    // position
-    .position-fixed\@#{$breakpoint} { position: fixed; }
-    .position-absolute\@#{$breakpoint} { position: absolute; }
-    .position-relative\@#{$breakpoint} { position: relative; }
-    .position-sticky\@#{$breakpoint} { position: sticky; }
+        // position
+        .position-fixed\@#{$breakpoint} { position: fixed; }
+        .position-absolute\@#{$breakpoint} { position: absolute; }
+        .position-relative\@#{$breakpoint} { position: relative; }
+        .position-sticky\@#{$breakpoint} { position: sticky; }
 
-    // flex
-    .flex-row\@#{$breakpoint} { flex-direction: row; }
-    .flex-row-reverse\@#{$breakpoint} { flex-direction: row-reverse; }
-    .flex-column\@#{$breakpoint} { flex-direction: column; }
-    .flex-column-reverse\@#{$breakpoint} { flex-direction: column-reverse; }
-    .flex-center\@#{$breakpoint} { justify-content: center; align-items: center; }
-    .flex-wrap\@#{$breakpoint} { flex-wrap: wrap; }
+        // flex
+        .flex-row\@#{$breakpoint} { flex-direction: row; }
+        .flex-row-reverse\@#{$breakpoint} { flex-direction: row-reverse; }
+        .flex-column\@#{$breakpoint} { flex-direction: column; }
+        .flex-column-reverse\@#{$breakpoint} { flex-direction: column-reverse; }
+        .flex-center\@#{$breakpoint} { justify-content: center; align-items: center; }
+        .flex-wrap\@#{$breakpoint} { flex-wrap: wrap; }
 
-    .flex-grow-0\@#{$breakpoint} { flex-grow: 0; }
-    .flex-grow\@#{$breakpoint} { flex-grow: 1; }
-    .flex-shrink-0\@#{$breakpoint} { flex-shrink: 0; }
-    .flex-shrink\@#{$breakpoint} { flex-shrink: 1; }
-    .flex-basis-0\@#{$breakpoint} { flex-basis: 0; }
+        .flex-grow-0\@#{$breakpoint} { flex-grow: 0; }
+        .flex-grow\@#{$breakpoint} { flex-grow: 1; }
+        .flex-shrink-0\@#{$breakpoint} { flex-shrink: 0; }
+        .flex-shrink\@#{$breakpoint} { flex-shrink: 1; }
+        .flex-basis-0\@#{$breakpoint} { flex-basis: 0; }
 
-    .order-1\@#{$breakpoint} { order: 1; }
-    .order-2\@#{$breakpoint} { order: 2; }
-    .order-3\@#{$breakpoint} { order: 3; }
-    .order-4\@#{$breakpoint} { order: 4; }
-    .order-5\@#{$breakpoint} { order: 5; }
-    .order-6\@#{$breakpoint} { order: 6; }
+        .order-1\@#{$breakpoint} { order: 1; }
+        .order-2\@#{$breakpoint} { order: 2; }
+        .order-3\@#{$breakpoint} { order: 3; }
+        .order-4\@#{$breakpoint} { order: 4; }
+        .order-5\@#{$breakpoint} { order: 5; }
+        .order-6\@#{$breakpoint} { order: 6; }
 
-    .items-center\@#{$breakpoint} { align-items: center; }
-    .items-start\@#{$breakpoint} { align-items: flex-start; }
-    .items-end\@#{$breakpoint} { align-items: flex-end; }
+        .items-center\@#{$breakpoint} { align-items: center; }
+        .items-start\@#{$breakpoint} { align-items: flex-start; }
+        .items-end\@#{$breakpoint} { align-items: flex-end; }
 
-    .justify-center\@#{$breakpoint} { justify-content: center; }
-    .justify-between\@#{$breakpoint} { justify-content: space-between; }
-    .justify-around\@#{$breakpoint} { justify-content: space-around; }
-    .justify-evenly\@#{$breakpoint} { justify-content: space-evenly; }
-    .justify-start\@#{$breakpoint} { justify-content: flex-start; }
-    .justify-end\@#{$breakpoint} { justify-content: flex-end; }
+        .justify-center\@#{$breakpoint} { justify-content: center; }
+        .justify-between\@#{$breakpoint} { justify-content: space-between; }
+        .justify-around\@#{$breakpoint} { justify-content: space-around; }
+        .justify-evenly\@#{$breakpoint} { justify-content: space-evenly; }
+        .justify-start\@#{$breakpoint} { justify-content: flex-start; }
+        .justify-end\@#{$breakpoint} { justify-content: flex-end; }
 
-    // width
-    .width-0\@#{$breakpoint} { width: 0; }
-    .width-100vw\@#{$breakpoint} { width: 100vw; }
-    .width-10\@#{$breakpoint} { width: 10%; }
-    .width-20\@#{$breakpoint} { width: 20%; }
-    .width-25\@#{$breakpoint} { width: 25%; }
-    .width-30\@#{$breakpoint} { width: 30%; }
-    .width-33\@#{$breakpoint} { width: 33%; }
-    .width-40\@#{$breakpoint} { width: 40%; }
-    .width-50\@#{$breakpoint} { width: 50%; }
-    .width-60\@#{$breakpoint} { width: 60%; }
-    .width-66\@#{$breakpoint} { width: 66%; }
-    .width-70\@#{$breakpoint} { width: 70%; }
-    .width-75\@#{$breakpoint} { width: 75%; }
-    .width-80\@#{$breakpoint} { width: 80%; }
-    .width-90\@#{$breakpoint} { width: 90%; }
-    .width-100\@#{$breakpoint} { width: 100%; }
-    .width-xxxxsm\@#{$breakpoint} { width: var(--size-xxxxsm); }
-    .width-xxxsm\@#{$breakpoint} { width: var(--size-xxxsm); }
-    .width-xxsm\@#{$breakpoint} { width: var(--size-xxsm); }
-    .width-xsm\@#{$breakpoint} { width: var(--size-xsm); } 
-    .width-sm\@#{$breakpoint} { width: var(--size-sm); }
-    .width-md\@#{$breakpoint} { width: var(--size-md); } 
-    .width-lg\@#{$breakpoint} { width: var(--size-lg); } 
-    .width-xlg\@#{$breakpoint} { width: var(--size-xlg); } 
-    .width-xxlg\@#{$breakpoint} { width: var(--size-xxlg); } 
-    .width-xxxlg\@#{$breakpoint} { width: var(--size-xxxlg); }
-    .width-xxxxlg\@#{$breakpoint} { width: var(--size-xxxxlg); }
+        // width
+        .width-0\@#{$breakpoint} { width: 0; }
+        .width-100vw\@#{$breakpoint} { width: 100vw; }
+        .width-10\@#{$breakpoint} { width: 10%; }
+        .width-20\@#{$breakpoint} { width: 20%; }
+        .width-25\@#{$breakpoint} { width: 25%; }
+        .width-30\@#{$breakpoint} { width: 30%; }
+        .width-33\@#{$breakpoint} { width: 33%; }
+        .width-40\@#{$breakpoint} { width: 40%; }
+        .width-50\@#{$breakpoint} { width: 50%; }
+        .width-60\@#{$breakpoint} { width: 60%; }
+        .width-66\@#{$breakpoint} { width: 66%; }
+        .width-70\@#{$breakpoint} { width: 70%; }
+        .width-75\@#{$breakpoint} { width: 75%; }
+        .width-80\@#{$breakpoint} { width: 80%; }
+        .width-90\@#{$breakpoint} { width: 90%; }
+        .width-100\@#{$breakpoint} { width: 100%; }
+        .width-xxxxsm\@#{$breakpoint} { width: var(--size-xxxxsm); }
+        .width-xxxsm\@#{$breakpoint} { width: var(--size-xxxsm); }
+        .width-xxsm\@#{$breakpoint} { width: var(--size-xxsm); }
+        .width-xsm\@#{$breakpoint} { width: var(--size-xsm); } 
+        .width-sm\@#{$breakpoint} { width: var(--size-sm); }
+        .width-md\@#{$breakpoint} { width: var(--size-md); } 
+        .width-lg\@#{$breakpoint} { width: var(--size-lg); } 
+        .width-xlg\@#{$breakpoint} { width: var(--size-xlg); } 
+        .width-xxlg\@#{$breakpoint} { width: var(--size-xxlg); } 
+        .width-xxxlg\@#{$breakpoint} { width: var(--size-xxxlg); }
+        .width-xxxxlg\@#{$breakpoint} { width: var(--size-xxxxlg); }
 
-    // height
-    .height-0\@#{$breakpoint} { height: 0; }
-    .height-100vw\@#{$breakpoint} { height: 100vw; }
-    .height-10\@#{$breakpoint} { height: 10%; }
-    .height-20\@#{$breakpoint} { height: 20%; }
-    .height-25\@#{$breakpoint} { height: 25%; }
-    .height-30\@#{$breakpoint} { height: 30%; }
-    .height-33\@#{$breakpoint} { height: calc(100% / 3); }
-    .height-40\@#{$breakpoint} { height: 40%; }
-    .height-50\@#{$breakpoint} { height: 50%; }
-    .height-60\@#{$breakpoint} { height: 60%; }
-    .height-66\@#{$breakpoint} { height: calc(100% / 1.5); }
-    .height-70\@#{$breakpoint} { height: 70%; }
-    .height-75\@#{$breakpoint} { height: 75%; }
-    .height-80\@#{$breakpoint} { height: 80%; }
-    .height-90\@#{$breakpoint} { height: 90%; }
-    .height-100\@#{$breakpoint} { height: 100%; }
-    .height-xxxxsm\@#{$breakpoint} { height: var(--size-xxxxsm); }
-    .height-xxxsm\@#{$breakpoint} { height: var(--size-xxxsm); }
-    .height-xxsm\@#{$breakpoint} { height: var(--size-xxsm); }
-    .height-xsm\@#{$breakpoint} { height: var(--size-xsm); } 
-    .height-sm\@#{$breakpoint} { height: var(--size-sm); }
-    .height-md\@#{$breakpoint} { height: var(--size-md); } 
-    .height-lg\@#{$breakpoint} { height: var(--size-lg); } 
-    .height-xlg\@#{$breakpoint} { height: var(--size-xlg); } 
-    .height-xxlg\@#{$breakpoint} { height: var(--size-xxlg); } 
-    .height-xxxlg\@#{$breakpoint} { height: var(--size-xxxlg); }
-    .height-xxxxlg\@#{$breakpoint} { height: var(--size-xxxxlg); }
+        // height
+        .height-0\@#{$breakpoint} { height: 0; }
+        .height-100vw\@#{$breakpoint} { height: 100vw; }
+        .height-10\@#{$breakpoint} { height: 10%; }
+        .height-20\@#{$breakpoint} { height: 20%; }
+        .height-25\@#{$breakpoint} { height: 25%; }
+        .height-30\@#{$breakpoint} { height: 30%; }
+        .height-33\@#{$breakpoint} { height: calc(100% / 3); }
+        .height-40\@#{$breakpoint} { height: 40%; }
+        .height-50\@#{$breakpoint} { height: 50%; }
+        .height-60\@#{$breakpoint} { height: 60%; }
+        .height-66\@#{$breakpoint} { height: calc(100% / 1.5); }
+        .height-70\@#{$breakpoint} { height: 70%; }
+        .height-75\@#{$breakpoint} { height: 75%; }
+        .height-80\@#{$breakpoint} { height: 80%; }
+        .height-90\@#{$breakpoint} { height: 90%; }
+        .height-100\@#{$breakpoint} { height: 100%; }
+        .height-xxxxsm\@#{$breakpoint} { height: var(--size-xxxxsm); }
+        .height-xxxsm\@#{$breakpoint} { height: var(--size-xxxsm); }
+        .height-xxsm\@#{$breakpoint} { height: var(--size-xxsm); }
+        .height-xsm\@#{$breakpoint} { height: var(--size-xsm); } 
+        .height-sm\@#{$breakpoint} { height: var(--size-sm); }
+        .height-md\@#{$breakpoint} { height: var(--size-md); } 
+        .height-lg\@#{$breakpoint} { height: var(--size-lg); } 
+        .height-xlg\@#{$breakpoint} { height: var(--size-xlg); } 
+        .height-xxlg\@#{$breakpoint} { height: var(--size-xxlg); } 
+        .height-xxxlg\@#{$breakpoint} { height: var(--size-xxxlg); }
+        .height-xxxxlg\@#{$breakpoint} { height: var(--size-xxxxlg); }
 
-    //padding
-    .padding-0\@#{$breakpoint} { padding: 0; }
-    .padding-xxxxsm\@#{$breakpoint} { padding: var(--space-xxxxsm); }
-    .padding-xxxsm\@#{$breakpoint} { padding: var(--space-xxxsm); }
-    .padding-xxsm\@#{$breakpoint} { padding: var(--space-xxsm); }
-    .padding-xsm\@#{$breakpoint} { padding: var(--space-xsm); }
-    .padding-sm\@#{$breakpoint} { padding: var(--space-sm); }
-    .padding-md\@#{$breakpoint} { padding: var(--space-md); }
-    .padding-lg\@#{$breakpoint} { padding: var(--space-lg); }
-    .padding-xlg\@#{$breakpoint} { padding: var(--space-xlg); }
-    .padding-xxlg\@#{$breakpoint} { padding: var(--space-xxlg); }
-    .padding-xxxlg\@#{$breakpoint} { padding: var(--space-xxxlg); }
-    .padding-xxxxlg\@#{$breakpoint} { padding: var(--space-xxxxlg); }
-    
-    .padding-top-0\@#{$breakpoint} { padding-top: 0; }
-    .padding-top-xxxxsm\@#{$breakpoint} { padding-top: var(--space-xxxxsm); }
-    .padding-top-xxxsm\@#{$breakpoint} { padding-top: var(--space-xxxsm); }
-    .padding-top-xxsm\@#{$breakpoint} { padding-top: var(--space-xxsm); }
-    .padding-top-xsm\@#{$breakpoint} { padding-top: var(--space-xsm); }
-    .padding-top-sm\@#{$breakpoint} { padding-top: var(--space-sm); }
-    .padding-top-md\@#{$breakpoint} { padding-top: var(--space-md); }
-    .padding-top-lg\@#{$breakpoint} { padding-top: var(--space-lg); }
-    .padding-top-xlg\@#{$breakpoint} { padding-top: var(--space-xlg); }
-    .padding-top-xxlg\@#{$breakpoint} { padding-top: var(--space-xxlg); }
-    .padding-top-xxxlg\@#{$breakpoint} { padding-top: var(--space-xxxlg); }
-    .padding-top-xxxxlg\@#{$breakpoint} { padding-top: var(--space-xxxxlg); }
+        //padding
+        .padding-0\@#{$breakpoint} { padding: 0; }
+        .padding-xxxxsm\@#{$breakpoint} { padding: var(--space-xxxxsm); }
+        .padding-xxxsm\@#{$breakpoint} { padding: var(--space-xxxsm); }
+        .padding-xxsm\@#{$breakpoint} { padding: var(--space-xxsm); }
+        .padding-xsm\@#{$breakpoint} { padding: var(--space-xsm); }
+        .padding-sm\@#{$breakpoint} { padding: var(--space-sm); }
+        .padding-md\@#{$breakpoint} { padding: var(--space-md); }
+        .padding-lg\@#{$breakpoint} { padding: var(--space-lg); }
+        .padding-xlg\@#{$breakpoint} { padding: var(--space-xlg); }
+        .padding-xxlg\@#{$breakpoint} { padding: var(--space-xxlg); }
+        .padding-xxxlg\@#{$breakpoint} { padding: var(--space-xxxlg); }
+        .padding-xxxxlg\@#{$breakpoint} { padding: var(--space-xxxxlg); }
+        
+        .padding-top-0\@#{$breakpoint} { padding-top: 0; }
+        .padding-top-xxxxsm\@#{$breakpoint} { padding-top: var(--space-xxxxsm); }
+        .padding-top-xxxsm\@#{$breakpoint} { padding-top: var(--space-xxxsm); }
+        .padding-top-xxsm\@#{$breakpoint} { padding-top: var(--space-xxsm); }
+        .padding-top-xsm\@#{$breakpoint} { padding-top: var(--space-xsm); }
+        .padding-top-sm\@#{$breakpoint} { padding-top: var(--space-sm); }
+        .padding-top-md\@#{$breakpoint} { padding-top: var(--space-md); }
+        .padding-top-lg\@#{$breakpoint} { padding-top: var(--space-lg); }
+        .padding-top-xlg\@#{$breakpoint} { padding-top: var(--space-xlg); }
+        .padding-top-xxlg\@#{$breakpoint} { padding-top: var(--space-xxlg); }
+        .padding-top-xxxlg\@#{$breakpoint} { padding-top: var(--space-xxxlg); }
+        .padding-top-xxxxlg\@#{$breakpoint} { padding-top: var(--space-xxxxlg); }
 
-    .padding-right-0\@#{$breakpoint} { padding-right: 0; }
-    .padding-right-xxxxs\@#{$breakpoint} { padding-right: var(--space-xxxxsm); }
-    .padding-right-xxxs\@#{$breakpoint} { padding-right: var(--space-xxxsm); }
-    .padding-right-xxs\@#{$breakpoint} { padding-right: var(--space-xxsm); }
-    .padding-right-xs\@#{$breakpoint} { padding-right: var(--space-xsm); }
-    .padding-right-sm\@#{$breakpoint} { padding-right: var(--space-sm); }
-    .padding-right-md\@#{$breakpoint} { padding-right: var(--space-md); }
-    .padding-right-lg\@#{$breakpoint} { padding-right: var(--space-lg); }
-    .padding-right-xl\@#{$breakpoint} { padding-right: var(--space-xlg); }
-    .padding-right-xxl\@#{$breakpoint} { padding-right: var(--space-xxlg); }
-    .padding-right-xxxl\@#{$breakpoint} { padding-right: var(--space-xxxlg); }
-    .padding-right-xxxxl\@#{$breakpoint} { padding-right: var(--space-xxxxlg); }
-    
-    .padding-bottom-0\@#{$breakpoint} { padding-bottom: 0; }
-    .padding-bottom-xxxxs\@#{$breakpoint} { padding-bottom: var(--space-xxxxsm); }
-    .padding-bottom-xxxs\@#{$breakpoint} { padding-bottom: var(--space-xxxsm); }
-    .padding-bottom-xxs\@#{$breakpoint} { padding-bottom: var(--space-xxsm); }
-    .padding-bottom-xs\@#{$breakpoint} { padding-bottom: var(--space-xsm); }
-    .padding-bottom-sm\@#{$breakpoint} { padding-bottom: var(--space-sm); }
-    .padding-bottom-md\@#{$breakpoint} { padding-bottom: var(--space-md); }
-    .padding-bottom-lg\@#{$breakpoint} { padding-bottom: var(--space-lg); }
-    .padding-bottom-xl\@#{$breakpoint} { padding-bottom: var(--space-xlg); }
-    .padding-bottom-xxl\@#{$breakpoint} { padding-bottom: var(--space-xxlg); }
-    .padding-bottom-xxxl\@#{$breakpoint} { padding-bottom: var(--space-xxxlg); }
-    .padding-bottom-xxxxl\@#{$breakpoint} { padding-bottom: var(--space-xxxxlg); }
+        .padding-right-0\@#{$breakpoint} { padding-right: 0; }
+        .padding-right-xxxxs\@#{$breakpoint} { padding-right: var(--space-xxxxsm); }
+        .padding-right-xxxs\@#{$breakpoint} { padding-right: var(--space-xxxsm); }
+        .padding-right-xxs\@#{$breakpoint} { padding-right: var(--space-xxsm); }
+        .padding-right-xs\@#{$breakpoint} { padding-right: var(--space-xsm); }
+        .padding-right-sm\@#{$breakpoint} { padding-right: var(--space-sm); }
+        .padding-right-md\@#{$breakpoint} { padding-right: var(--space-md); }
+        .padding-right-lg\@#{$breakpoint} { padding-right: var(--space-lg); }
+        .padding-right-xl\@#{$breakpoint} { padding-right: var(--space-xlg); }
+        .padding-right-xxl\@#{$breakpoint} { padding-right: var(--space-xxlg); }
+        .padding-right-xxxl\@#{$breakpoint} { padding-right: var(--space-xxxlg); }
+        .padding-right-xxxxl\@#{$breakpoint} { padding-right: var(--space-xxxxlg); }
+        
+        .padding-bottom-0\@#{$breakpoint} { padding-bottom: 0; }
+        .padding-bottom-xxxxs\@#{$breakpoint} { padding-bottom: var(--space-xxxxsm); }
+        .padding-bottom-xxxs\@#{$breakpoint} { padding-bottom: var(--space-xxxsm); }
+        .padding-bottom-xxs\@#{$breakpoint} { padding-bottom: var(--space-xxsm); }
+        .padding-bottom-xs\@#{$breakpoint} { padding-bottom: var(--space-xsm); }
+        .padding-bottom-sm\@#{$breakpoint} { padding-bottom: var(--space-sm); }
+        .padding-bottom-md\@#{$breakpoint} { padding-bottom: var(--space-md); }
+        .padding-bottom-lg\@#{$breakpoint} { padding-bottom: var(--space-lg); }
+        .padding-bottom-xl\@#{$breakpoint} { padding-bottom: var(--space-xlg); }
+        .padding-bottom-xxl\@#{$breakpoint} { padding-bottom: var(--space-xxlg); }
+        .padding-bottom-xxxl\@#{$breakpoint} { padding-bottom: var(--space-xxxlg); }
+        .padding-bottom-xxxxl\@#{$breakpoint} { padding-bottom: var(--space-xxxxlg); }
 
-    .padding-left-0\@#{$breakpoint} { padding-left: 0; }
-    .padding-left-xxxxs\@#{$breakpoint} { padding-left: var(--space-xxxxsm); }
-    .padding-left-xxxs\@#{$breakpoint} { padding-left: var(--space-xxxsm); }
-    .padding-left-xxs\@#{$breakpoint} { padding-left: var(--space-xxsm); }
-    .padding-left-xs\@#{$breakpoint} { padding-left: var(--space-xsm); }
-    .padding-left-sm\@#{$breakpoint} { padding-left: var(--space-sm); }
-    .padding-left-md\@#{$breakpoint} { padding-left: var(--space-md); }
-    .padding-left-lg\@#{$breakpoint} { padding-left: var(--space-lg); }
-    .padding-left-xl\@#{$breakpoint} { padding-left: var(--space-xlg); }
-    .padding-left-xxl\@#{$breakpoint} { padding-left: var(--space-xxlg); }
-    .padding-left-xxxl\@#{$breakpoint} { padding-left: var(--space-xxxlg); }
-    .padding-left-xxxxl\@#{$breakpoint} { padding-left: var(--space-xxxxlg); }
+        .padding-left-0\@#{$breakpoint} { padding-left: 0; }
+        .padding-left-xxxxs\@#{$breakpoint} { padding-left: var(--space-xxxxsm); }
+        .padding-left-xxxs\@#{$breakpoint} { padding-left: var(--space-xxxsm); }
+        .padding-left-xxs\@#{$breakpoint} { padding-left: var(--space-xxsm); }
+        .padding-left-xs\@#{$breakpoint} { padding-left: var(--space-xsm); }
+        .padding-left-sm\@#{$breakpoint} { padding-left: var(--space-sm); }
+        .padding-left-md\@#{$breakpoint} { padding-left: var(--space-md); }
+        .padding-left-lg\@#{$breakpoint} { padding-left: var(--space-lg); }
+        .padding-left-xl\@#{$breakpoint} { padding-left: var(--space-xlg); }
+        .padding-left-xxl\@#{$breakpoint} { padding-left: var(--space-xxlg); }
+        .padding-left-xxxl\@#{$breakpoint} { padding-left: var(--space-xxxlg); }
+        .padding-left-xxxxl\@#{$breakpoint} { padding-left: var(--space-xxxxlg); }
 
-    //margin
-    .margin-0\@#{$breakpoint} { margin: 0; }
-    .margin-xxxxsm\@#{$breakpoint} { margin: var(--space-xxxxsm); }
-    .margin-xxxsm\@#{$breakpoint} { margin: var(--space-xxxsm); }
-    .margin-xxsm\@#{$breakpoint} { margin: var(--space-xxsm); }
-    .margin-xsm\@#{$breakpoint} { margin: var(--space-xsm); }
-    .margin-sm\@#{$breakpoint} { margin: var(--space-sm); }
-    .margin-md\@#{$breakpoint} { margin: var(--space-md); }
-    .margin-lg\@#{$breakpoint} { margin: var(--space-lg); }
-    .margin-xlg\@#{$breakpoint} { margin: var(--space-xlg); }
-    .margin-xxlg\@#{$breakpoint} { margin: var(--space-xxlg); }
-    .margin-xxxlg\@#{$breakpoint} { margin: var(--space-xxxlg); }
-    .margin-xxxxlg\@#{$breakpoint} { margin: var(--space-xxxxlg); }
-    
-    .margin-top-0\@#{$breakpoint} { margin-top: 0; }
-    .margin-top-xxxxsm\@#{$breakpoint} { margin-top: var(--space-xxxxsm); }
-    .margin-top-xxxsm\@#{$breakpoint} { margin-top: var(--space-xxxsm); }
-    .margin-top-xxsm\@#{$breakpoint} { margin-top: var(--space-xxsm); }
-    .margin-top-xsm\@#{$breakpoint} { margin-top: var(--space-xsm); }
-    .margin-top-sm\@#{$breakpoint} { margin-top: var(--space-sm); }
-    .margin-top-md\@#{$breakpoint} { margin-top: var(--space-md); }
-    .margin-top-lg\@#{$breakpoint} { margin-top: var(--space-lg); }
-    .margin-top-xlg\@#{$breakpoint} { margin-top: var(--space-xlg); }
-    .margin-top-xxlg\@#{$breakpoint} { margin-top: var(--space-xxlg); }
-    .margin-top-xxxlg\@#{$breakpoint} { margin-top: var(--space-xxxlg); }
-    .margin-top-xxxxlg\@#{$breakpoint} { margin-top: var(--space-xxxxlg); }
+        //margin
+        .margin-0\@#{$breakpoint} { margin: 0; }
+        .margin-xxxxsm\@#{$breakpoint} { margin: var(--space-xxxxsm); }
+        .margin-xxxsm\@#{$breakpoint} { margin: var(--space-xxxsm); }
+        .margin-xxsm\@#{$breakpoint} { margin: var(--space-xxsm); }
+        .margin-xsm\@#{$breakpoint} { margin: var(--space-xsm); }
+        .margin-sm\@#{$breakpoint} { margin: var(--space-sm); }
+        .margin-md\@#{$breakpoint} { margin: var(--space-md); }
+        .margin-lg\@#{$breakpoint} { margin: var(--space-lg); }
+        .margin-xlg\@#{$breakpoint} { margin: var(--space-xlg); }
+        .margin-xxlg\@#{$breakpoint} { margin: var(--space-xxlg); }
+        .margin-xxxlg\@#{$breakpoint} { margin: var(--space-xxxlg); }
+        .margin-xxxxlg\@#{$breakpoint} { margin: var(--space-xxxxlg); }
+        
+        .margin-top-0\@#{$breakpoint} { margin-top: 0; }
+        .margin-top-xxxxsm\@#{$breakpoint} { margin-top: var(--space-xxxxsm); }
+        .margin-top-xxxsm\@#{$breakpoint} { margin-top: var(--space-xxxsm); }
+        .margin-top-xxsm\@#{$breakpoint} { margin-top: var(--space-xxsm); }
+        .margin-top-xsm\@#{$breakpoint} { margin-top: var(--space-xsm); }
+        .margin-top-sm\@#{$breakpoint} { margin-top: var(--space-sm); }
+        .margin-top-md\@#{$breakpoint} { margin-top: var(--space-md); }
+        .margin-top-lg\@#{$breakpoint} { margin-top: var(--space-lg); }
+        .margin-top-xlg\@#{$breakpoint} { margin-top: var(--space-xlg); }
+        .margin-top-xxlg\@#{$breakpoint} { margin-top: var(--space-xxlg); }
+        .margin-top-xxxlg\@#{$breakpoint} { margin-top: var(--space-xxxlg); }
+        .margin-top-xxxxlg\@#{$breakpoint} { margin-top: var(--space-xxxxlg); }
 
-    .margin-right-0\@#{$breakpoint} { margin-right: 0; }
-    .margin-right-xxxxs\@#{$breakpoint} { margin-right: var(--space-xxxxsm); }
-    .margin-right-xxxs\@#{$breakpoint} { margin-right: var(--space-xxxsm); }
-    .margin-right-xxs\@#{$breakpoint} { margin-right: var(--space-xxsm); }
-    .margin-right-xs\@#{$breakpoint} { margin-right: var(--space-xsm); }
-    .margin-right-sm\@#{$breakpoint} { margin-right: var(--space-sm); }
-    .margin-right-md\@#{$breakpoint} { margin-right: var(--space-md); }
-    .margin-right-lg\@#{$breakpoint} { margin-right: var(--space-lg); }
-    .margin-right-xl\@#{$breakpoint} { margin-right: var(--space-xlg); }
-    .margin-right-xxl\@#{$breakpoint} { margin-right: var(--space-xxlg); }
-    .margin-right-xxxl\@#{$breakpoint} { margin-right: var(--space-xxxlg); }
-    .margin-right-xxxxl\@#{$breakpoint} { margin-right: var(--space-xxxxlg); }
-    
-    .margin-bottom-0\@#{$breakpoint} { margin-bottom: 0; }
-    .margin-bottom-xxxxs\@#{$breakpoint} { margin-bottom: var(--space-xxxxsm); }
-    .margin-bottom-xxxs\@#{$breakpoint} { margin-bottom: var(--space-xxxsm); }
-    .margin-bottom-xxs\@#{$breakpoint} { margin-bottom: var(--space-xxsm); }
-    .margin-bottom-xs\@#{$breakpoint} { margin-bottom: var(--space-xsm); }
-    .margin-bottom-sm\@#{$breakpoint} { margin-bottom: var(--space-sm); }
-    .margin-bottom-md\@#{$breakpoint} { margin-bottom: var(--space-md); }
-    .margin-bottom-lg\@#{$breakpoint} { margin-bottom: var(--space-lg); }
-    .margin-bottom-xl\@#{$breakpoint} { margin-bottom: var(--space-xlg); }
-    .margin-bottom-xxl\@#{$breakpoint} { margin-bottom: var(--space-xxlg); }
-    .margin-bottom-xxxl\@#{$breakpoint} { margin-bottom: var(--space-xxxlg); }
-    .margin-bottom-xxxxl\@#{$breakpoint} { margin-bottom: var(--space-xxxxlg); }
+        .margin-right-0\@#{$breakpoint} { margin-right: 0; }
+        .margin-right-xxxxs\@#{$breakpoint} { margin-right: var(--space-xxxxsm); }
+        .margin-right-xxxs\@#{$breakpoint} { margin-right: var(--space-xxxsm); }
+        .margin-right-xxs\@#{$breakpoint} { margin-right: var(--space-xxsm); }
+        .margin-right-xs\@#{$breakpoint} { margin-right: var(--space-xsm); }
+        .margin-right-sm\@#{$breakpoint} { margin-right: var(--space-sm); }
+        .margin-right-md\@#{$breakpoint} { margin-right: var(--space-md); }
+        .margin-right-lg\@#{$breakpoint} { margin-right: var(--space-lg); }
+        .margin-right-xl\@#{$breakpoint} { margin-right: var(--space-xlg); }
+        .margin-right-xxl\@#{$breakpoint} { margin-right: var(--space-xxlg); }
+        .margin-right-xxxl\@#{$breakpoint} { margin-right: var(--space-xxxlg); }
+        .margin-right-xxxxl\@#{$breakpoint} { margin-right: var(--space-xxxxlg); }
+        
+        .margin-bottom-0\@#{$breakpoint} { margin-bottom: 0; }
+        .margin-bottom-xxxxs\@#{$breakpoint} { margin-bottom: var(--space-xxxxsm); }
+        .margin-bottom-xxxs\@#{$breakpoint} { margin-bottom: var(--space-xxxsm); }
+        .margin-bottom-xxs\@#{$breakpoint} { margin-bottom: var(--space-xxsm); }
+        .margin-bottom-xs\@#{$breakpoint} { margin-bottom: var(--space-xsm); }
+        .margin-bottom-sm\@#{$breakpoint} { margin-bottom: var(--space-sm); }
+        .margin-bottom-md\@#{$breakpoint} { margin-bottom: var(--space-md); }
+        .margin-bottom-lg\@#{$breakpoint} { margin-bottom: var(--space-lg); }
+        .margin-bottom-xl\@#{$breakpoint} { margin-bottom: var(--space-xlg); }
+        .margin-bottom-xxl\@#{$breakpoint} { margin-bottom: var(--space-xxlg); }
+        .margin-bottom-xxxl\@#{$breakpoint} { margin-bottom: var(--space-xxxlg); }
+        .margin-bottom-xxxxl\@#{$breakpoint} { margin-bottom: var(--space-xxxxlg); }
 
-    .margin-left-0\@#{$breakpoint} { margin-left: 0; }
-    .margin-left-xxxxs\@#{$breakpoint} { margin-left: var(--space-xxxxsm); }
-    .margin-left-xxxs\@#{$breakpoint} { margin-left: var(--space-xxxsm); }
-    .margin-left-xxs\@#{$breakpoint} { margin-left: var(--space-xxsm); }
-    .margin-left-xs\@#{$breakpoint} { margin-left: var(--space-xsm); }
-    .margin-left-sm\@#{$breakpoint} { margin-left: var(--space-sm); }
-    .margin-left-md\@#{$breakpoint} { margin-left: var(--space-md); }
-    .margin-left-lg\@#{$breakpoint} { margin-left: var(--space-lg); }
-    .margin-left-xl\@#{$breakpoint} { margin-left: var(--space-xlg); }
-    .margin-left-xxl\@#{$breakpoint} { margin-left: var(--space-xxlg); }
-    .margin-left-xxxl\@#{$breakpoint} { margin-left: var(--space-xxxlg); }
-    .margin-left-xxxxl\@#{$breakpoint} { margin-left: var(--space-xxxxlg); }
+        .margin-left-0\@#{$breakpoint} { margin-left: 0; }
+        .margin-left-xxxxs\@#{$breakpoint} { margin-left: var(--space-xxxxsm); }
+        .margin-left-xxxs\@#{$breakpoint} { margin-left: var(--space-xxxsm); }
+        .margin-left-xxs\@#{$breakpoint} { margin-left: var(--space-xxsm); }
+        .margin-left-xs\@#{$breakpoint} { margin-left: var(--space-xsm); }
+        .margin-left-sm\@#{$breakpoint} { margin-left: var(--space-sm); }
+        .margin-left-md\@#{$breakpoint} { margin-left: var(--space-md); }
+        .margin-left-lg\@#{$breakpoint} { margin-left: var(--space-lg); }
+        .margin-left-xl\@#{$breakpoint} { margin-left: var(--space-xlg); }
+        .margin-left-xxl\@#{$breakpoint} { margin-left: var(--space-xxlg); }
+        .margin-left-xxxl\@#{$breakpoint} { margin-left: var(--space-xxxlg); }
+        .margin-left-xxxxl\@#{$breakpoint} { margin-left: var(--space-xxxxlg); }
+    }
 }
