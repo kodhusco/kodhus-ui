@@ -2,7 +2,6 @@ body {
     background: var(--color-bg);
     color: var(--color-higher);
     margin: 0;
-    font-size: 16px;
     font-family: var(--default-font-family);
 }
 
@@ -190,7 +189,6 @@ body {
 a {
     
     &.cdt-btn {
-        color: var(--color-white);
         &-primary {
             background-color: var(--primary-color);
         }
