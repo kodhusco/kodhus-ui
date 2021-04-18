@@ -75,7 +75,7 @@ textarea {
   border-radius: 5px;
   outline: none;
   font-weight: 500;
-  transition: all 0.3s;
+  transition: border-color 0.3s;
   &:focus {
     border-color: var(--primary-color);
   }
@@ -163,7 +163,7 @@ textarea {
       border-radius: 50px;
       background: var(--color-lower);
       cursor: pointer;
-      transition: all 0.1s;
+      transition: background-color 0.1s;
       z-index: 1;
     }
     input[type="checkbox"]:after {
@@ -201,7 +201,7 @@ textarea {
       position: relative;
       &:before {
         content: "";
-        transition: all 0.1s;
+        transition: background-color 0.1s;
         position: absolute;
         display: block;
         width: 16px;
