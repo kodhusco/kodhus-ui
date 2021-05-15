@@ -1,3 +1,4 @@
+import Utils from './utils';
 import Dialog from "./dialog";
 import Notification from "./notification";
 import Navigation from "./navigation";
@@ -21,6 +22,7 @@ import Button from "./button";
 })();
 
 export {
+  Utils,
   Dialog,
   Notification,
   Navigation,
