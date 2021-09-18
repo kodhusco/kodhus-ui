@@ -4,10 +4,19 @@ Kodhus css and javascript UI library.
 Checkout https://kodhus.com for more info on how to use this library to build amazing interfaces and web pages.
 
 ## Getting Started
+### If you just want it up and running:
+```
+npx create-kodhus-app my-app
+yarn gulp
+```
+
+### If you have cloned or downloaded this repository then:
 1. Install dependencies by running `yarn install`
-2. Start the framework by running `yarn run gulp`. This will open the browser on an empty page.
-3. In order to start coding your webpage, open `src/index.html` and start coding your html. The browser automatically updates with your new changes.
-4. To deploy your interface/web page, copy the whole public folder content into your web server's root directory.
+2. Start the framework by running `yarn gulp`. This will open the browser on an empty page.
+
+## Start coding
+1. In order to start coding your webpage, open `src/index.html` and start coding your html. The browser automatically updates with your new changes when you save the fille.
+2. To deploy your interface/web page, copy the whole public folder content into your web server's root directory.
 
 
 ## Add more pages
