@@ -11,7 +11,7 @@ yarn gulp
 ```
 
 ### If you have cloned or downloaded this repository then:
-1. Install dependencies by running `yarn install`
+1. Install dependencies by running `yarn install`.
 2. Start the framework by running `yarn gulp`. This will open the browser on an empty page.
 
 ## Start coding
