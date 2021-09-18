@@ -25,4 +25,4 @@ As you can see the structure of `src` folder includes `fonts`, `js`, `scss` and 
 
 ---
 ## Collaboration
-* For collaboration, modify your additions/changes in a new branch and create a pull request to master branch
+* For collaboration, create a pull request with your changes/additions. We will get to it as soon as possible.
