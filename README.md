@@ -7,6 +7,7 @@ Checkout https://kodhus.com for more info on how to use this library to build am
 ### If you just want it up and running:
 ```
 npx create-kodhus-app my-app
+cd my-app
 yarn gulp
 ```
 
